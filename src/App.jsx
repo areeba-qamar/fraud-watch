@@ -2,15 +2,28 @@ import Header from "./components/Header";
 import TransactionForm from "./components/TransactionForm";
 import TransactionCard from "./components/TransactionCard";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [transactions, setTransactions] = useState([]);
+
   return (
     <main className="app">
       <Header />
 
-      <TransactionForm />
+      {/*Add to the previous transactions (array) , and spread operator to keep that were already there */}
 
-      <section className="transactions">
+   <TransactionForm
+      onAddTransaction={(transaction) => {
+    setTransactions((prevTransactions) => [
+      ...prevTransactions,
+      transaction,
+    ]);
+    }}
+    />
+    {console.log(transactions)}
+
+  <section className="transactions">
   <h2>Transactions</h2>
 
   <TransactionCard

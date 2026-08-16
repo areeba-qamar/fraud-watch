@@ -1,22 +1,23 @@
 import { useState } from "react";
 
-function TransactionForm() {
+function TransactionForm({onAddTransaction}) {
 
     // BR-2: Form input state
   const [merchant, setMerchant] = useState("");
   const [amount, setAmount] = useState("");
 
-  // BR-2: Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // For now, just check the submitted form data.
-    // Adding it to the transactions array will come in BR-3.
-    console.log({
-      merchant,
-      amount,
-    });
+ // BR-3: Create a new transaction object
+   const newTransaction={
+    merchant,
+    amount,
   };
+
+    // BR-3: Send the new transaction to App
+  onAddTransaction(newTransaction); 
+   };
 
   return (
        
@@ -37,7 +38,7 @@ function TransactionForm() {
         onChange={(event) => setAmount(event.target.value)}
       />
        {/* BR-2: Submit the form  */}
-      <button type="submit" onClick={handleSubmit}>
+      <button type="submit" >
         Add Transaction
       </button>
     </form>
