@@ -21,31 +21,21 @@ function App() {
     ]);
     }}
     />
-    {console.log(transactions)}
 
   <section className="transactions">
   <h2>Transactions</h2>
 
-  <TransactionCard
-    merchant="Amazon"
-    amount="45.99"
-    date="Aug 10, 2026"
-    status="Safe"
-  />
 
-  <TransactionCard
-    merchant="Unknown POS #221"
-    amount="899"
-    date="Aug 11, 2026"
-    status="Fraud"
-  />
+{/* BR-4: Render a card for every transaction in state */}
 
+  {transactions.map((transaction, index) => (
   <TransactionCard
-    merchant="Random Loan App"
-    amount="150"
-    date="Aug 12, 2026"
-    status="Suspicious"
+    key={index}
+    merchant={transaction.merchant}
+    amount={transaction.amount}
   />
+))}
+
 </section>
     </main>
   );
