@@ -1,10 +1,16 @@
 import { useState } from "react";
 
-function TransactionForm({onAddTransaction}) {
+function TransactionForm({onAddTransaction, transactionToEdit,
+  onUpdateTransaction,}) {
 
-    // BR-2: Form input state
-  const [merchant, setMerchant] = useState("");
-  const [amount, setAmount] = useState("");
+    // BR-7: Initialize form with existing transaction when editing
+const [merchant, setMerchant] = useState(
+  transactionToEdit?.merchant ?? ""
+);
+
+const [amount, setAmount] = useState(
+  transactionToEdit ? String(transactionToEdit.amount) : ""
+);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,13 +23,20 @@ function TransactionForm({onAddTransaction}) {
   };
 
     // BR-3: Send the new transaction to App
-  onAddTransaction(newTransaction); 
+  //onAddTransaction(newTransaction); 
+
+  // BR-7: Add a new transaction or update the selected one
+  if (transactionToEdit) {
+   onUpdateTransaction(newTransaction);
+  } else {
+  onAddTransaction(newTransaction);
+   }
    };
 
   return (
        
-    <form className="transaction-form" onSubmit={handleSubmit}>      <h2>Add Transaction</h2>
-
+    <form className="transaction-form" onSubmit={handleSubmit}> 
+       <h2>{transactionToEdit ? "Edit Transaction" : "Add Transaction"}</h2>
          {/* BR-2: Controlled merchant input */}    
       <input
         type="text"
@@ -38,10 +51,9 @@ function TransactionForm({onAddTransaction}) {
         value={amount}
         onChange={(event) => setAmount(event.target.value)}
       />
-       {/* BR-2: Submit the form  */}
-      <button type="submit" >
-        Add Transaction
-      </button>
+       <button type="submit">
+         {transactionToEdit ? "Update Transaction" : "Add Transaction"}
+       </button>
     </form>
   );
 }

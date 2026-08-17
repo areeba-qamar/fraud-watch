@@ -6,6 +6,8 @@ import { useState } from "react";
 
 function App() {
   const [transactions, setTransactions] = useState([]);
+ // BR-7: Store the index of the transaction currently being edited
+  const [editingIndex, setEditingIndex] = useState(null);
 
    // BR-6: Delete a transaction from state
   const handleDeleteTransaction = (indexToDelete) => {
@@ -15,6 +17,21 @@ function App() {
       )
     );
   };
+
+   // BR-7: Update the selected transaction
+const handleUpdateTransaction = (updatedTransaction) => {
+  setTransactions((prevTransactions) =>
+    prevTransactions.map((transaction, index) =>
+      index === editingIndex
+        ? updatedTransaction
+        : transaction
+    )
+  );
+
+  // BR-7: Exit edit mode after updating
+  setEditingIndex(null);
+};
+  
   
   return (
     <main className="app">
@@ -23,12 +40,25 @@ function App() {
       {/*Add to the previous transactions (array) , and spread operator to keep that were already there */}
 
    <TransactionForm
+
+        key={editingIndex ?? "new"}
+
       onAddTransaction={(transaction) => {
-    setTransactions((prevTransactions) => [
-      ...prevTransactions,
-      transaction,
+       setTransactions((prevTransactions) => [
+         ...prevTransactions,
+         transaction,
     ]);
     }}
+
+      // BR-7: Pass selected transaction to the form for editing
+
+    transactionToEdit={
+     editingIndex !== null
+     ? transactions[editingIndex]
+     : null
+   }
+   onUpdateTransaction={handleUpdateTransaction}
+
     />
 
   <section className="transactions">
@@ -56,7 +86,7 @@ function App() {
     amount={transaction.amount}
     status={status}
     onDelete={()=>handleDeleteTransaction(index)}
-
+    onEdit={() => setEditingIndex(index)}
   />
   )
 })}
