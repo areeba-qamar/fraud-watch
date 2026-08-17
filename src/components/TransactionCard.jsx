@@ -1,4 +1,4 @@
-function TransactionCard({ merchant, amount }) {
+function TransactionCard({ merchant, amount, status }) {
   return (
     <article className={`transaction-card ${status.toLowerCase()}`}>
       {/* BR-4: Display transaction data received through props */}
@@ -11,7 +11,7 @@ function TransactionCard({ merchant, amount }) {
       <strong>${amount}</strong>
 
       {/* Risk status */}
-      {/*<span className="risk-badge">{status}</span>*/}
+      <span className="risk-badge">{status}</span>
 
       {/* These buttons are UI-only for now */}
       <div className="transaction-actions">

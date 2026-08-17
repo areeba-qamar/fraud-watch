@@ -28,13 +28,28 @@ function App() {
 
 {/* BR-4: Render a card for every transaction in state */}
 
-  {transactions.map((transaction, index) => (
+  {transactions.map((transaction, index) =>{
+
+    // BR-5: Determine risk based on transaction amount
+  let status;
+
+  if (transaction.amount < 2000) {
+    status = "Safe";
+  } else if (transaction.amount <= 5000) {
+    status = "Suspicious";
+  } else {
+    status = "Fraud";
+  }
+  return(
   <TransactionCard
     key={index}
     merchant={transaction.merchant}
     amount={transaction.amount}
+    status={status}
+
   />
-))}
+  )
+})}
 
 </section>
     </main>

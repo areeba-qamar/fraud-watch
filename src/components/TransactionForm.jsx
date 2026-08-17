@@ -12,7 +12,8 @@ function TransactionForm({onAddTransaction}) {
  // BR-3: Create a new transaction object
    const newTransaction={
     merchant,
-    amount,
+    // BR-5: Convert amount from input string to a number
+    amount: Number(amount),
   };
 
     // BR-3: Send the new transaction to App
