@@ -7,6 +7,15 @@ import { useState } from "react";
 function App() {
   const [transactions, setTransactions] = useState([]);
 
+   // BR-6: Delete a transaction from state
+  const handleDeleteTransaction = (indexToDelete) => {
+    setTransactions((prevTransactions) =>
+      prevTransactions.filter(
+        (_, index) => index !== indexToDelete
+      )
+    );
+  };
+  
   return (
     <main className="app">
       <Header />
@@ -46,13 +55,14 @@ function App() {
     merchant={transaction.merchant}
     amount={transaction.amount}
     status={status}
+    onDelete={()=>handleDeleteTransaction(index)}
 
   />
   )
 })}
-
 </section>
-    </main>
+
+</main>
   );
 }
 
