@@ -1,3 +1,6 @@
+import editIcon from "../assets/edit.svg";
+import trashIcon from "../assets/trash.svg";
+
 function TransactionCard({ merchant, amount, status , onDelete, onEdit }) {
   return (
     <article className={`transaction-card ${status.toLowerCase()}`}>
@@ -15,8 +18,8 @@ function TransactionCard({ merchant, amount, status , onDelete, onEdit }) {
 
       {/* These buttons are UI-only for now */}
       <div className="transaction-actions">
-        <button type="button" onClick={onEdit}>Edit</button>
-        <button type="button"  onClick={onDelete}>Delete</button>
+        <button type="button" onClick={onEdit}><img src={editIcon} alt="Edit" /></button>
+        <button type="button"  onClick={onDelete}><img src={trashIcon} alt="Delete" /></button>
       </div>
     </article>
   );

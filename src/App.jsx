@@ -62,7 +62,16 @@ const handleUpdateTransaction = (updatedTransaction) => {
     />
 
   <section className="transactions">
-  <h2>Transactions</h2>
+  <div className="transactions-heading">
+    <h2>Transactions</h2>
+  </div>
+
+  <div className="transaction-columns">
+    <span>Merchant</span>
+    <span>Amount</span>
+    <span>Risk</span>
+    <span>Actions</span>
+  </div>
 
 
 {/* BR-4: Render a card for every transaction in state */}

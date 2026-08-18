@@ -6,9 +6,9 @@ function Header() {
       <div className="brand">
         <img src={shieldIcon} alt="FraudWatch shield" />
         
-        <div>
-          <h1>FRAUDWATCH</h1>
-          <p>Monitor your transactions and identify potential risks.</p>
+        <div className="brand-text">
+          <h1>FraudWatch</h1>
+          <p>Transaction Risk Monitoring</p>
         </div>
       </div>
     </header>

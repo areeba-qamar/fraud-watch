@@ -1,43 +1,71 @@
 .app {
   min-height: 100vh;
-  background: #07121c;
   color: white;
   padding: 25px;
+
+   /* BR-8: Background image with dark navy overlay */
+  background-image:
+    linear-gradient(
+      rgba(5, 12, 28, 0.75),
+      rgba(5, 12, 28, 0.75)
+    ),
+    url("./assets/fraud-watch-background.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .app-header {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 25px 0 40px;
+  max-width: 1050px;
+  margin: 0 auto 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 20px 30px;
+
+  background: rgba(10, 25, 45, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(56, 213, 242, 0.15);
+  border-radius: 16px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
 }
 
 .brand img {
-  width: 64px;
-  height: 64px;
-  padding: 14px;
-  border: 1px solid #16445a;
-  border-radius: 18px;
-  background: #0b2230;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+
+  
 }
 
-.brand h1 {
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-text h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.4rem;
+  line-height: 1;
   letter-spacing: 1px;
 }
 
-.brand p {
+.brand-text p {
   margin: 6px 0 0;
-  color: #7895b8;
+  color: #8fb3d9;
   font-size: 1rem;
 }
-
 
 /* Styling of the Transaction form*/
 
@@ -49,8 +77,11 @@
   gap: 15px;
   align-items: center;
 
-  background: #111e32;
-  border: 1px solid #1d3853;
+  background: rgba(17, 30, 50, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+border: 1px solid rgba(56, 213, 242, 0.15);
   border-radius: 16px;
 }
 
@@ -84,7 +115,7 @@
 }
 
 .transaction-form button:hover {
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 /*Styling for the transaction Card*/
@@ -95,37 +126,50 @@
 }
 
 .transactions h2 {
-  margin-bottom: 18px;
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
 }
 
 .transaction-card {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr auto;
+  display: flex;
   align-items: center;
   gap: 20px;
 
-  padding: 22px;
+  padding: 18px 22px;
   margin-bottom: 14px;
 
-  background: #111e32;
-  border: 1px solid #1d3853;
+  background: rgba(15, 30, 55, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(120, 190, 255, 0.15);
   border-radius: 14px;
 }
 
+.transaction-info {
+  flex: 2;
+}
+
 .transaction-info h3 {
-  margin: 0 0 6px;
+  margin: 0;
+  font-size: 1.15rem;
 }
 
 .transaction-info p {
-  margin: 0;
-  color: #7895b8;
+  margin: 6px 0 0;
+  color: #8fb3d9;
+  font-size: 0.9rem;
 }
 
 .transaction-card strong {
+  flex: 1;
   font-size: 1.25rem;
 }
 
 .risk-badge {
+  flex: 1;
   width: fit-content;
   padding: 9px 16px;
   border-radius: 12px;
@@ -161,20 +205,93 @@
 }
 
 .transaction-actions {
+  flex: 0 0 90px;
   display: flex;
   gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .transaction-actions button {
-  padding: 9px 15px;
-  border: 1px solid #294563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  padding: 8px;
+
+  /* BR-8: Light navy background so dark icons remain visible */
+  background: #38d5f2;
+  border: 1px solid #3b5d7d;
   border-radius: 8px;
 
-  background: #0b1422;
-  color: white;
   cursor: pointer;
 }
 
+.transaction-actions img {
+  width: 18px;
+  height: 18px;
+}
+
 .transaction-actions button:hover {
-  border-color: #38d5f2;
+opacity: 0.75;}
+
+.transactions-heading {
+  display: flex;
+  align-items: center;
+
+    /* BR-8: Keep Transactions heading left-aligned */
+
+  justify-content: flex-start;
+
+  margin: 25px auto 12px;
+  padding: 12px 20px;
+
+  background: rgba(15, 30, 55, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(120, 190, 255, 0.12);
+  border-radius: 12px;
+}
+
+.transactions-heading h2 {
+  margin: 0;
+
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+
+.transaction-columns {
+  display: flex;
+  align-items: center;
+
+    /* BR-8: Match column spacing with transaction cards */
+  gap: 20px;
+  padding: 0 22px 8px;
+  margin-bottom: 8px;
+
+  color: #8fb3d9;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/*align transaction column widths with the transaction cards.*/
+
+.transaction-columns span:nth-child(1) {
+  flex: 2;
+}
+
+.transaction-columns span:nth-child(2),
+.transaction-columns span:nth-child(3) {
+  flex: 1;
+}
+
+.transaction-columns span:nth-child(4) {
+  flex: 0 0 90px;
+  text-align: right;
 }
